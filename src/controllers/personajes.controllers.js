@@ -1,4 +1,4 @@
-import { personajes } from "../data/personajes";
+import { personajes } from "../data/personajes.js";
 
 export const obtenerPersonajes = (req, res) => {
   res.json(personajes);
