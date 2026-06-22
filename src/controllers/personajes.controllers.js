@@ -15,3 +15,19 @@ export const obtenerPersonajesPorId = (req, res) => {
   }
   res.json(personaje);
 };
+export const crearPersonaje = (req, res) => {
+  const { nombre, imagen } = req.body;
+  if (!nombre || nombre === "") {
+    return res.status(400).json({ error: "El nombre no puede estar vacia" });
+  }
+  if (!imagen || imagen === "") {
+    return res.status(400).json({ error: "la imagen no puede estar vacia" });
+  }
+  const nuevoPersonaje = {
+    id: personajes.length + 1,
+    nombre,
+    imagen,
+  };
+  personajes.push(nuevoPersonaje);
+  res.status(201).json({ message: "Personaje creado", nuevoPersonaje });
+};
